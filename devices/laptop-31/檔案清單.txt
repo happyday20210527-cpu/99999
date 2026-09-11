@@ -1,0 +1,17 @@
+本次任務(31號筆電 - Kilo Code + qwen2.5-coder:32b 架設)新增檔案路徑清單
+建立時間: 2026-09-11
+
+1. /home/user/99999/devices/laptop-31/README.md
+   - 架設總說明文件(硬體評估、步驟總覽、疑難排解)
+
+2. /home/user/99999/devices/laptop-31/setup-ollama-kilocode.ps1
+   - Windows PowerShell 自動安裝腳本(安裝 Ollama、檢查 RAM、下載模型)
+
+3. /home/user/99999/devices/laptop-31/kilocode-settings-snippet.json
+   - Kilo Code Provider 設定範例
+
+4. /home/user/99999/devices/laptop-31/檔案清單.txt
+   - 本檔案,記錄所有新增檔案路徑
+
+git 分支: claude/new-session-m8p06k
+repo: happyday20210527-cpu/99999

@@ -1,0 +1,20 @@
+{
+  "_說明": "這是 Kilo Code Provider 設定的示意範例,實際欄位名稱請以你 VS Code 中安裝的 Kilo Code 版本介面為準。若該版本支援直接貼上/匯入 JSON 設定,可參考下方欄位對應手動填寫。",
+  "provider": "ollama",
+  "ollama": {
+    "baseUrl": "http://localhost:11434",
+    "modelId": "qwen2.5-coder:32b",
+    "_modelId_備選": [
+      "qwen2.5-coder:14b",
+      "qwen2.5-coder:7b"
+    ]
+  },
+  "_手動設定步驟": [
+    "1. VS Code 打開 Kilo Code 側邊欄",
+    "2. 點擊齒輪 (Settings) 圖示",
+    "3. 進入 Providers 分頁,新增/選擇 Ollama",
+    "4. Base URL 填 http://localhost:11434",
+    "5. Model ID 填 qwen2.5-coder:32b (或依實際下載的 tag 替換)",
+    "6. 儲存設定,回聊天視窗測試"
+  ]
+}
