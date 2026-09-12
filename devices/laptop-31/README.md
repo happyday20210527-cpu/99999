@@ -130,6 +130,16 @@ ollama run qwen2.5-coder:32b "寫一個 Python 的 quicksort function"
 
 ---
 
-## 6. 檔案清單
+## 6. Kilo Code 自動核准設定 + 閒置自動催促腳本
+
+若要讓 Kilo Code(終端機/CLI 版本)大部分操作自動放行、只有「刪除檔案」與
+「影響系統穩定性」這兩類操作不自動核准,並搭配一支每 15 分鐘檢查任務是否
+閒置、閒置就自動催促繼續的腳本,請見:
+
+- `kilocode-auto-approve-settings.jsonc` — `kilo.jsonc` 權限設定範例
+- `kilo-auto-nudge.ps1` — 啟動任務並自動監控/催促的 PowerShell 腳本
+- `kilocode-auto-approve-guide.md` — 完整套用步驟與限制說明
+
+## 7. 檔案清單
 
 所有本次新增檔案的完整路徑,已記錄在 `檔案清單.txt`。

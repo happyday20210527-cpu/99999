@@ -15,3 +15,22 @@
 
 git 分支: claude/new-session-m8p06k
 repo: happyday20210527-cpu/99999
+
+---
+
+追加任務(Kilo Code 自動核准設定 + 閒置自動催促腳本)新增檔案路徑清單
+建立時間: 2026-09-12
+
+5. /home/user/99999/devices/laptop-31/kilocode-auto-approve-settings.jsonc
+   - kilo.jsonc 權限設定範例:除「刪除檔案」與「影響系統穩定性」類操作
+     一律 deny/ask 之外,其餘動作自動核准(allow)
+
+6. /home/user/99999/devices/laptop-31/kilo-auto-nudge.ps1
+   - PowerShell 腳本:啟動 kilo 任務並接管其 stdin/stdout,每 15 分鐘
+     檢查一次,若判定閒置(等指示/原地待命)則自動送出催促訊息
+
+7. /home/user/99999/devices/laptop-31/kilocode-auto-approve-guide.md
+   - 上述兩份檔案的完整套用步驟、限制與風險說明
+
+git 分支: claude/trusting-albattani-awi6nz
+repo: happyday20210527-cpu/99999

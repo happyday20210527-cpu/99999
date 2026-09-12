@@ -1,0 +1,101 @@
+// Kilo Code — Auto Approve(自動核准)建議設定
+//
+// 目標:除了「刪除檔案」與「影響系統穩定性」的操作以外,其餘動作(讀檔、寫檔/編輯、
+// 執行一般指令、瀏覽器操作、MCP 工具、子任務…)一律自動核准,不用每次跳視窗按同意。
+//
+// 使用方式(依你安裝的版本擇一):
+//   A. 新版 Kilo Code(有 kilo.jsonc 設定檔):
+//      把下面 "permission" 區塊內容,合併貼到你的 kilo.jsonc 裡
+//        - 專案層級: <你的專案根目錄>\.kilocode\kilo.jsonc
+//        - 全域層級: %USERPROFILE%\.kilocode\kilo.jsonc (或 %USERPROFILE%\.config\kilo\kilo.jsonc,
+//          實際路徑以你安裝版本的說明為準)
+//      若檔案已存在其他設定,用「合併」而不是整檔覆蓋。
+//
+//   B. 舊版 Kilo Code(側邊欄齒輪 -> Settings -> Auto-Approve 分頁,逐項切換 UI):
+//      比照下面每個工具的 allow/ask/deny,手動把對應的核取方塊打開:
+//        - 讀取檔案 / 寫入編輯檔案 / 執行指令 / 使用瀏覽器 / 使用 MCP 工具 / 執行子任務
+//          / 重試 API 請求 / 出錯時自動重送 → 全部打勾(=允許自動核准)
+//        - 「執行指令」若該版本有「指令白名單/黑名單」欄位,把下面 bash 區塊列出的
+//          刪除類與系統類指令樣式加進黑名單(deny),其餘留白或設為允許
+//
+// 注意:此檔案為離線草擬的建議設定,實際欄位名稱/位置可能因你安裝的 Kilo Code 版本
+// 而略有差異,請以你電腦上實際看到的介面為準;本次雲端作業環境無法連上你的電腦,
+// 也無法連線 kilo.ai 逐一核對最新介面文字,故用途是給你「照著填」的範本,而非自動生效。
+
+{
+  "$schema": "https://app.kilo.ai/config.json",
+
+  "permission": {
+    // 一般讀取類操作 → 全部自動允許
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "webfetch": "allow",
+
+    // 檔案建立/修改 → 自動允許(這不等於刪除檔案,是新增/覆寫內容)
+    "edit": "allow",
+    "write": "allow",
+
+    // Kilo 內建其他功能 → 自動允許
+    "skill": "allow",
+    "task": "allow",
+
+    // 專案資料夾以外的路徑 → 仍要詢問,避免動到不相關的系統檔案
+    "external_directory": "ask",
+
+    // 終端機指令:預設全部自動允許,但下面列出的「刪除檔案」與
+    // 「可能影響系統穩定性」的指令樣式一律擋下或改為詢問。
+    // (依官方文件說明,規則由上到下比對,後面比對到的規則會覆蓋前面的,
+    //  所以要把 "*": "allow" 放最前面,細項規則放後面。)
+    "bash": {
+      "*": "allow",
+
+      // ---- 刪除檔案類指令(全部擋掉,不自動核准) ----
+      "rm *": "deny",
+      "rm": "deny",
+      "del *": "deny",
+      "erase *": "deny",
+      "Remove-Item*": "deny",
+      "ri *": "deny",
+      "rd *": "deny",
+      "rmdir*": "deny",
+      "unlink*": "deny",
+      "git clean*": "ask",
+      "git reset --hard*": "ask",
+      "git push --force*": "ask",
+      "git branch -D*": "ask",
+      "npx rimraf*": "deny",
+      "rimraf*": "deny",
+
+      // ---- 可能影響系統穩定性的指令(全部擋掉或改為詢問) ----
+      "format*": "deny",
+      "diskpart*": "deny",
+      "Clear-Disk*": "deny",
+      "Remove-Partition*": "deny",
+      "Initialize-Disk*": "deny",
+      "vssadmin delete*": "deny",
+      "sdelete*": "deny",
+      "cipher /w*": "deny",
+      "shutdown*": "deny",
+      "Restart-Computer*": "deny",
+      "Stop-Computer*": "deny",
+      "bcdedit*": "deny",
+      "reg delete*": "deny",
+      "reg add*": "ask",
+      "Set-ExecutionPolicy*": "deny",
+      "Disable-WindowsOptionalFeature*": "deny",
+      "Uninstall-WindowsFeature*": "ask",
+      "sc.exe*": "ask",
+      "sc stop*": "ask",
+      "sc config*": "ask",
+      "Stop-Service*": "ask",
+      "Disable-Service*": "ask",
+      "netsh advfirewall*": "ask",
+      "taskkill /f*": "ask",
+      "wmic*shutdown*": "deny",
+      "choco uninstall*": "ask",
+      "winget uninstall*": "ask"
+    }
+  }
+}
