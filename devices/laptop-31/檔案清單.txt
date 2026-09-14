@@ -34,3 +34,15 @@ repo: happyday20210527-cpu/99999
 
 git 分支: claude/trusting-albattani-awi6nz
 repo: happyday20210527-cpu/99999
+
+---
+
+追加任務(桌面捷徑 — 一鍵啟動 Claude, E:\3131---claude)新增檔案路徑清單
+建立時間: 2026-09-14
+
+8. /home/user/99999/devices/laptop-31/create-claude-desktop-shortcut.ps1
+   - 在桌面建立「Claude」捷徑的安裝腳本:點兩下捷徑會自動切換到
+     E:\3131---claude 並啟動 claude
+
+git 分支: claude/trusting-albattani-awi6nz
+repo: happyday20210527-cpu/99999

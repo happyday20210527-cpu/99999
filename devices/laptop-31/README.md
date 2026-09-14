@@ -140,6 +140,21 @@ ollama run qwen2.5-coder:32b "寫一個 Python 的 quicksort function"
 - `kilo-auto-nudge.ps1` — 啟動任務並自動監控/催促的 PowerShell 腳本
 - `kilocode-auto-approve-guide.md` — 完整套用步驟與限制說明
 
-## 7. 檔案清單
+## 7. 桌面捷徑 — 一鍵啟動 Claude(E:\3131---claude)
+
+`create-claude-desktop-shortcut.ps1` — 在桌面建立一個「Claude」捷徑,點兩下
+會自動切換到 `E:\3131---claude` 並啟動 claude,不用再手動 cd + 打指令。
+
+**使用方式(在你的電腦上執行一次):**
+
+```powershell
+.\create-claude-desktop-shortcut.ps1
+```
+
+執行完成後,桌面就會出現「Claude」圖示,之後直接點兩下即可。
+若你的 claude 資料夾路徑不是 `E:\3131---claude`,可用
+`-ClaudeDir "你的路徑"` 參數指定。
+
+## 8. 檔案清單
 
 所有本次新增檔案的完整路徑,已記錄在 `檔案清單.txt`。
